@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.huangshi.wuji</groupId>
-	<artifactId>spring-scaffold</artifactId>
+	<artifactId>messaging-scaffold</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-scaffold</name>
-	<description>Scaffold for Spring Boot</description>
+	<name>messaging-scaffold</name>
+	<description>Messaging Scaffold for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -35,6 +35,55 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>5.5.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.13</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>2.5.0.RELEASE</version>
+		</dependency>
+
+
+
+
+
+
+
 	</dependencies>
 
 	<build>
