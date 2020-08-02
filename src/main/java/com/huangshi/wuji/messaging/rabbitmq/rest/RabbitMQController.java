@@ -16,12 +16,10 @@ public class RabbitMQController {
     @Autowired
     BusinessService service;
 
-    @RequestMapping(value = "/send/test",method = RequestMethod.GET)
-    public void sendMessageTest()throws Exception{
+    @RequestMapping(value = "/send/test",method = RequestMethod.POST)
+    public void sendMessageTest(String message)throws Exception{
 
-        String firstMessage = "hello! are you ok?";
-
-        service.doBusiness(firstMessage);
+        service.doBusiness(message);
 
 
     }
