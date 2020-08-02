@@ -4,8 +4,10 @@ public class SpringRabbitMQConstants {
 
     private SpringRabbitMQConstants() {}
 
-    public static final String RabbitMQ_Queue_Name = "spring-hs-rabbitmq";
-    public static final String Spring_RabbitMQ_Topic_Exchange_Name = "spring-hs-rabbitmq";
+    public static final String RabbitMQ_Queue_Name = "spring-hs-rabbitmq-queue";
+    public static final String Spring_RabbitMQ_Topic_Exchange_Name = "spring-hs-rabbitmq-exchange";
+    public static final String Spring_RabbitMQ_Topic_Exchange_Binding_Root = "spring.rabbimq.hs.#";
+    public static final String Spring_RabbitMQ_Topic_Exchange_Binding_Test = "spring.rabbimq.hs.test";
     public static final String RabbitMQ_Message_Routing_Key = "hs.first.route.key";
 
 

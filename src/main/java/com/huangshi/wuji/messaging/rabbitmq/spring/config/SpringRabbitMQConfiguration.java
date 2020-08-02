@@ -9,10 +9,14 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 @Configuration
+@Component
+@EnableAutoConfiguration
 public class SpringRabbitMQConfiguration {
 
     @Bean
@@ -27,7 +31,7 @@ public class SpringRabbitMQConfiguration {
 
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+        return BindingBuilder.bind(queue).to(exchange).with(SpringRabbitMQConstants.Spring_RabbitMQ_Topic_Exchange_Binding_Root);
     }
 
     @Bean

@@ -18,7 +18,7 @@ public class SpringRabbitMQProducer {
     private SpringReceiver receiver;
 
     public void sendMessage(String message)throws Exception{
-        rabbitTemplate.convertAndSend(SpringRabbitMQConstants.Spring_RabbitMQ_Topic_Exchange_Name, SpringRabbitMQConstants.RabbitMQ_Message_Routing_Key, message);
+        rabbitTemplate.convertAndSend(SpringRabbitMQConstants.Spring_RabbitMQ_Topic_Exchange_Name, SpringRabbitMQConstants.Spring_RabbitMQ_Topic_Exchange_Binding_Test, message);
         receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
     }
 
