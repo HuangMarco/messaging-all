@@ -17,12 +17,12 @@ public class SpringRabbitMQConfiguration {
 
     @Bean
     Queue queue(){
-        return new Queue(SpringRabbitMQConstants.Queue_Name, false);
+        return new Queue(SpringRabbitMQConstants.RabbitMQ_Queue_Name, false);
     }
 
     @Bean
     TopicExchange exchange(){
-        return new TopicExchange(SpringRabbitMQConstants.Topic_Exchange_Name);
+        return new TopicExchange(SpringRabbitMQConstants.Spring_RabbitMQ_Topic_Exchange_Name);
     }
 
     @Bean
@@ -35,7 +35,7 @@ public class SpringRabbitMQConfiguration {
                                              MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(SpringRabbitMQConstants.Queue_Name);
+        container.setQueueNames(SpringRabbitMQConstants.RabbitMQ_Queue_Name);
         container.setMessageListener(listenerAdapter);
         return container;
     }
