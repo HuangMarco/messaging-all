@@ -11,4 +11,5 @@ public interface EmployeeDAO {
     void updateEmployee(Employee emp);
     void executeUpdateEmployee(Employee emp);
     public void deleteEmployee(Employee emp);
+    int countEmployee();
 }
