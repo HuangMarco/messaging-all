@@ -5,16 +5,27 @@ spring:
 spring:
   profiles: dev
   datasource:
-    initialization-mode: always
+    # 每次启动的时候都会初始化数据库
+    # 如果只用JdbcTemplate的方式，那么SB启动时不会使用下面的jpa配置
+    # 如果只用JdbcTemplate的方式，配置18行的内容，会反复去执行，此时应当把initialization-mode改为NEVER
+    # 第一次本地开发启动时，13行设置为Always，等数据库表建立成功之后，将13行设置为NEVER，对比JPA来说还是不方便
+    # 可选项配置为ALWAYS, EMBEDDED, NEVER
+    initialization-mode: NEVER
     platform: postgres
     url: jdbc:postgresql://localhost:5432/sb-all
     username: postgres
     password: 123456
+    # schema路径，包含你需要执行的sql
+    schema: classpath:/schema.sql
+    # 如果应用没有正常启动是否继续数据库加载
+    continue-on-error: false
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
-      ddl-auto: create # create-每次创建表，同时数据会丢失；update-根据model
+      # create-每次创建表，同时数据会丢失；update-第一次加载Hibernete时创建数据库表，之后就只根据Model更新，注意即便Model中属性删除，数据库表中字段也不会删除,validate-每次都会和model比对，更新字段等，但是不会创建数据库表，none-不应用dd-auto
+      # 产品环境一般会手动创建sql创建数据库表
+      ddl-auto: none
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties:
       temp:
@@ -46,11 +57,27 @@ spring:
 spring:
   profiles: prod
   datasource:
+    # 每次启动的时候都会初始化数据库
     initialization-mode: always
     platform: postgres
     url: jdbc:postgresql://localhost:5432/sb-all
     username: postgres
     password: 123456
+    # schema路径，包含你需要执行的sql
+    schema: classpath:/schema.sql
+    # 如果应用没有正常启动是否继续数据库加载
+    continue-on-error: false
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      # create-每次创建表，同时数据会丢失；update-第一次加载Hibernete时创建数据库表，之后就只根据Model更新，注意即便Model中属性删除，数据库表中字段也不会删除,validate-每次都会和model比对，更新字段等，但是不会创建数据库表，none-不应用dd-auto
+      # 产品环境一般会手动创建sql创建数据库表
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      temp:
+        use_jdbc_metadata_defaults: true
   rabbitmq:
     password: guest
     username: guest
