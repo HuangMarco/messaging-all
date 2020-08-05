@@ -1,4 +1,4 @@
-package com.huangshi.wuji.messaging.app.dao.mapper;
+package com.huangshi.wuji.messaging.app.common.mapper;
 
 import com.huangshi.wuji.messaging.app.model.Employee;
 import org.springframework.jdbc.core.RowMapper;

@@ -1,4 +1,4 @@
-package com.huangshi.wuji.messaging.app.dao.translator;
+package com.huangshi.wuji.messaging.app.common.translator;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;

@@ -1,8 +1,8 @@
-package com.huangshi.wuji.messaging.app.dao.impl;
+package com.huangshi.wuji.messaging.app.common.dao.impl;
 
-import com.huangshi.wuji.messaging.app.dao.EmployeeDAO;
-import com.huangshi.wuji.messaging.app.dao.mapper.EmployeeRowMapper;
-import com.huangshi.wuji.messaging.app.dao.translator.CustomSQLErrorCodeTranslator;
+import com.huangshi.wuji.messaging.app.common.dao.EmployeeDAO;
+import com.huangshi.wuji.messaging.app.common.mapper.EmployeeRowMapper;
+import com.huangshi.wuji.messaging.app.common.translator.CustomSQLErrorCodeTranslator;
 import com.huangshi.wuji.messaging.app.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -25,7 +25,6 @@ import java.util.Map;
 
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
-
 
     private JdbcTemplate jdbcTemplate;
 

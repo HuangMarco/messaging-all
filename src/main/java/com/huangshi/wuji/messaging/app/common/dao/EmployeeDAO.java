@@ -1,4 +1,4 @@
-package com.huangshi.wuji.messaging.app.dao;
+package com.huangshi.wuji.messaging.app.common.dao;
 
 import com.huangshi.wuji.messaging.app.model.Employee;
 
