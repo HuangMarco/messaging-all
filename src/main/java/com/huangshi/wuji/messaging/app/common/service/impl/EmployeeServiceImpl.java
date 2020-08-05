@@ -2,7 +2,7 @@ package com.huangshi.wuji.messaging.app.common.service.impl;
 
 import com.huangshi.wuji.messaging.app.common.dao.EmployeeDAO;
 import com.huangshi.wuji.messaging.app.common.service.EmployeeService;
-import com.huangshi.wuji.messaging.app.model.Employee;
+import com.huangshi.wuji.messaging.app.common.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

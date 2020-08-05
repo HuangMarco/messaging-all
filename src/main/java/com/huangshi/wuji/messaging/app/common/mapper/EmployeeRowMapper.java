@@ -1,6 +1,6 @@
 package com.huangshi.wuji.messaging.app.common.mapper;
 
-import com.huangshi.wuji.messaging.app.model.Employee;
+import com.huangshi.wuji.messaging.app.common.model.Employee;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

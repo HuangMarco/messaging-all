@@ -1,6 +1,6 @@
 package com.huangshi.wuji.messaging.app.common.dao;
 
-import com.huangshi.wuji.messaging.app.model.Employee;
+import com.huangshi.wuji.messaging.app.common.model.Employee;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.huangshi.wuji.messaging.app.biz.controller;
 
 import com.huangshi.wuji.messaging.app.common.service.EmployeeService;
-import com.huangshi.wuji.messaging.app.model.Employee;
+import com.huangshi.wuji.messaging.app.common.model.Employee;
 import com.huangshi.wuji.messaging.swagger.config.SwaggerConstants;
 import org.springframework.web.bind.annotation.*;
 

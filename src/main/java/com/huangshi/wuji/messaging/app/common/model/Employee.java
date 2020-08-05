@@ -1,4 +1,4 @@
-package com.huangshi.wuji.messaging.app.model;
+package com.huangshi.wuji.messaging.app.common.model;
 
 import lombok.Data;
 

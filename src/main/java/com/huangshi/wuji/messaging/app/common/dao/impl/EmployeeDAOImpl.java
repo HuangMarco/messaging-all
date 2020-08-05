@@ -3,7 +3,7 @@ package com.huangshi.wuji.messaging.app.common.dao.impl;
 import com.huangshi.wuji.messaging.app.common.dao.EmployeeDAO;
 import com.huangshi.wuji.messaging.app.common.mapper.EmployeeRowMapper;
 import com.huangshi.wuji.messaging.app.common.translator.CustomSQLErrorCodeTranslator;
-import com.huangshi.wuji.messaging.app.model.Employee;
+import com.huangshi.wuji.messaging.app.common.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;

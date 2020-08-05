@@ -1,4 +1,4 @@
-package com.huangshi.wuji.messaging.app.config;
+package com.huangshi.wuji.messaging.app.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,6 @@ public class SpringJdbcConfig {
         dataSource.setPassword("123456");
         return dataSource;
     }
-
 
     @Bean
     public DataSource dataSource() {

@@ -4,5 +4,6 @@ public class SwaggerConstants {
 
     public static final String API_RabbitMQ = "/api/rabbitmq";
     public static final String API_JdbcTemplate = "/api/jdbc/template";
+    public static final String API_JPA = "/api/jdbc/jpa";
 
 }
