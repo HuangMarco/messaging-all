@@ -1,6 +1,7 @@
 package com.huangshi.wuji.messaging.app.jpa.service.impl;
 
 import com.huangshi.wuji.messaging.app.jpa.entity.JPAEmployee;
+import com.huangshi.wuji.messaging.app.jpa.repository.JPAEmployeeRepository;
 import com.huangshi.wuji.messaging.app.jpa.repository.PagingAndSortingJPAEmployeeRepository;
 import com.huangshi.wuji.messaging.app.jpa.service.JPAEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class JPAEmployeeServiceImpl implements JPAEmployeeService {
     @Autowired
     PagingAndSortingJPAEmployeeRepository pagingJPAEmployeeRepository;
 
+    @Autowired
+    JPAEmployeeRepository employeeRepo;
+
     @Override
     public List<JPAEmployee> findAllByEmployeeName(String employeeName) {
 
@@ -36,6 +40,11 @@ public class JPAEmployeeServiceImpl implements JPAEmployeeService {
 
         return allEmployeesWithSameName;
 
+    }
+
+    @Override
+    public JPAEmployee addNewEmployee(JPAEmployee emp) {
+        return employeeRepo.save(emp);
     }
 
     /**

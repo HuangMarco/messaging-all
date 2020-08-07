@@ -13,9 +13,11 @@ import javax.persistence.*;
 @Table(name="BUSINESS_EMPLOYEE")
 public class JPAEmployee {
 
+    //这里如果设置了sequence，即便你页面上设置了employee_id，那么数据库依然按照自增策略创建主键
     @Id
-//    @Column(name = "employee_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "employee_id")
+    @SequenceGenerator(name="seq-gen",sequenceName="MY_SEQ_GEN",initialValue=205, allocationSize=1)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq-gen")
     private Long employeeId;
 
 //    @Column(name = "employee_name", nullable=true, length=200)

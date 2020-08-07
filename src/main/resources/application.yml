@@ -10,7 +10,7 @@ spring:
     # 如果只用JdbcTemplate的方式，配置18行的内容，会反复去执行，此时应当把initialization-mode改为NEVER
     # 第一次本地开发启动时，13行设置为Always，等数据库表建立成功之后，将13行设置为NEVER，对比JPA来说还是不方便
     # 可选项配置为ALWAYS, EMBEDDED, NEVER
-    initialization-mode: NEVER
+    initialization-mode: Always
     platform: postgres
     url: jdbc:postgresql://localhost:5432/sb-all
     username: postgres

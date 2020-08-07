@@ -17,4 +17,5 @@ public interface JPAEmployeeRepository extends CrudRepository<JPAEmployee, Long>
     @Query("SELECT JE FROM JPAEmployee JE WHERE LOWER(JE.firstName) = LOWER(:name)")
     JPAEmployee getByFirstName(String name);
 
+
 }

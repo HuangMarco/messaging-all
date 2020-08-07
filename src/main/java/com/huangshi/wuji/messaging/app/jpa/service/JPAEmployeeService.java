@@ -9,6 +9,8 @@ public interface JPAEmployeeService {
 
     List<JPAEmployee> findAllByEmployeeName(String employeeName);
 
+    JPAEmployee addNewEmployee(JPAEmployee emp);
+
     //按照指定排序条件sortBy排序
     List<JPAEmployee> getAllEmployees(Integer pageNo, Integer pageSize, String sortBy);
 

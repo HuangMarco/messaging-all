@@ -4,6 +4,8 @@ import com.huangshi.wuji.messaging.app.common.dao.EmployeeDAO;
 import com.huangshi.wuji.messaging.app.common.mapper.EmployeeRowMapper;
 import com.huangshi.wuji.messaging.app.common.translator.CustomSQLErrorCodeTranslator;
 import com.huangshi.wuji.messaging.app.common.model.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -26,6 +28,8 @@ import java.util.Map;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
 
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeDAOImpl.class);
+
     private JdbcTemplate jdbcTemplate;
 
     private NamedParameterJdbcTemplate template;
@@ -35,6 +39,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     private SimpleJdbcInsert simpleJdbcInsert;
 
     //SB会自动找到名为dataSource的数据源并注入
+    //如果是h2，那么改名为dataSource，因为其配置在SpringJdbcConfig中的bean名称
     @Autowired
     public void setDataSource(final DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
@@ -61,13 +66,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void insertEmployee(Employee emp) {
-        final String sql = "insert into employee(employeeId, employeeName , employeeAddress,employeeEmail) values(:employeeId,:employeeName,:employeeEmail,:employeeAddress)";
+
+        logger.info("Start to insert employee{}",emp.toString());
+        final String sql = "insert into employee(employeeId, employeeName , employeeAddress, employeeEmail, firstName, lastName) values(:employeeId,:employeeName,:employeeEmail,:employeeAddress,:firstName,:lastName)";
+
+        logger.info("print sql:{}",sql);
+
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("employeeId", emp.getEmployeeId())
                 .addValue("employeeName", emp.getEmployeeName())
                 .addValue("employeeEmail", emp.getEmployeeEmail())
-                .addValue("employeeAddress", emp.getEmployeeAddress());
+                .addValue("employeeAddress", emp.getEmployeeAddress())
+                .addValue("firstName", emp.getFirstName())
+                .addValue("lastName", emp.getLastName());
         template.update(sql,param, holder);
 
 

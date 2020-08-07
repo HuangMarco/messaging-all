@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +28,12 @@ public class JPAEmployeeController {
         List<JPAEmployee> list = employeeService.getAllEmployees(pageNo, pageSize, sortBy);
 
         return new ResponseEntity<List<JPAEmployee>>(list, new HttpHeaders(), HttpStatus.OK);
+    }
+
+
+    //为JPAEmployee设置sequence，即便页面上设置了employee_id，那么数据库依然按照自增策略创建主键
+    @PostMapping(value = "/add/new/employee")
+    public void createJPAEmployee(@RequestBody JPAEmployee emp) {
+        employeeService.addNewEmployee(emp);
     }
 }

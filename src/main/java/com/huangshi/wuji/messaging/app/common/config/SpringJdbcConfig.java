@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 public class SpringJdbcConfig {
 
     @Bean
-    public DataSource myPostgreSQLDataSource() {
+    public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/sb-all");
@@ -23,13 +23,13 @@ public class SpringJdbcConfig {
         return dataSource;
     }
 
-    @Bean
+   /* @Bean
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .addScript("classpath:/schema.sql")
                 .addScript("classpath:/test-data.sql").build();
-    }
+    }*/
 
 
 }
