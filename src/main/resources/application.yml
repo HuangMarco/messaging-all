@@ -17,7 +17,7 @@ spring:
     hibernate:
       # create-每次创建表，同时数据会丢失；update-第一次加载Hibernete时创建数据库表，之后就只根据Model更新，注意即便Model中属性删除，数据库表中字段也不会删除,validate-每次都会和model比对，更新字段等，但是不会创建数据库表，none-不应用dd-auto
       # 产品环境一般会手动创建sql创建数据库表
-      # 注意：代码中配置会覆盖这里的配置：SpringDataJpaConfig
+      # 注意：代码中配置会覆盖这里的配置：https://github.com/HuangMarco/messaging-all/blob/dev/src/main/java/com/huangshi/wuji/messaging/app/jpa/config/SpringDataJpaConfig.java#L88
       ddl-auto: create # create-drop
       format_sql: true
   rabbitmq:
