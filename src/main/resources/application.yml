@@ -4,8 +4,22 @@ spring:
 ---
 spring:
   profiles: dev
+  # customized application information(includes data source)
+  # business database for business data
+  app:
+    datasource:
+      # business database for business data
+      biz:
+        url: jdbc:postgresql://localhost:5432/business
+        username: admin
+        password: admin
+    # message database
+      messaging:
+        url: jdbc:postgresql://localhost:5432/messging
+        username: admin
+        password: admin
   datasource:
-    url: jdbc:postgresql://localhost:5432/sb-all
+    url: jdbc:postgresql://localhost:5432/sb-all #createDatabaseIfNotExist=true for mysql
     username: postgres
     password: 123456
     driver-class-name: "org.postgresql.Driver" # MYSQL: com.mysql.jdbc.Driver
@@ -16,7 +30,9 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       # create-每次创建表，同时数据会丢失；update-第一次加载Hibernete时创建数据库表，之后就只根据Model更新，注意即便Model中属性删除，数据库表中字段也不会删除,validate-每次都会和model比对，更新字段等，但是不会创建数据库表，none-不应用dd-auto
+      # create-drop 在session结束的时候删除schema
       # 产品环境一般会手动创建sql创建数据库表
+      #https://docs.jboss.org/hibernate/orm/5.1/userguide/html_single/Hibernate_User_Guide.html#configurations-hbmddl
       # 注意：代码中配置会覆盖这里的配置：https://github.com/HuangMarco/messaging-all/blob/dev/src/main/java/com/huangshi/wuji/messaging/app/jpa/config/SpringDataJpaConfig.java#L88
       ddl-auto: create # create-drop
       format_sql: true

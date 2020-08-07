@@ -43,6 +43,7 @@ public class SpringDataJpaConfig {
     private Environment env;
 
     @Bean
+    @Primary
     public DataSource jpaDataSource() {
 
         //只适用于DBCP连接池，在pom.xml中已注释掉
