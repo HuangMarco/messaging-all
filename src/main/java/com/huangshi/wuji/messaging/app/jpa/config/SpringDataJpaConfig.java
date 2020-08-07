@@ -25,11 +25,11 @@ import java.util.Properties;
  */
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.huangshi.wuji.messaging.app")
+@EnableJpaRepositories(basePackages = "com.huangshi.wuji.messaging.app.jpa")
 @EnableTransactionManagement
 @EnableAutoConfiguration
-@ComponentScan("com.huangshi.wuji.messaging.app")
-@EntityScan("com.huangshi.wuji.messaging.app")
+//@ComponentScan("com.huangshi.wuji.messaging.app.jpa")
+@EntityScan("com.huangshi.wuji.messaging.app.jpa")
 public class SpringDataJpaConfig {
 
     private static final String Property_Name_Hibernate_Dialect = "hibernate.dialect";
@@ -37,7 +37,7 @@ public class SpringDataJpaConfig {
     private static final String Property_Name_Hibernate_JDBC_Fetch_Size = "hibernate.jdbc.fetch_size";
     private static final String Property_Name_Hibernate_JDBC_Batch_Size = "hibernate.jdbc.batch_size";
     private static final String Property_Name_Hibernate_Show_SQL = "hibernate.show_sql";
-    private static final String[] EntityManager_Packages_To_Scan = {"com.huangshi.wuji.messaging.app"};
+    private static final String[] EntityManager_Packages_To_Scan = {"com.huangshi.wuji.messaging.app.jpa"};
 
     @Autowired
     private Environment env;
@@ -85,6 +85,7 @@ public class SpringDataJpaConfig {
     private HibernateJpaVendorAdapter vendorAdaptor() {
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
+        vendorAdapter.setGenerateDdl(true);
         return vendorAdapter;
     }
 
