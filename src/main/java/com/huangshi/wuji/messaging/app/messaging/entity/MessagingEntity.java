@@ -3,8 +3,10 @@ package com.huangshi.wuji.messaging.app.messaging.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -25,5 +27,17 @@ public class MessagingEntity {
 
     @Column(name = "app_id")
     private String applicationId;
+
+    @Basic(optional = false)
+    @Column(name = "created_date", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Basic(optional = false)
+    @Column(name = "updated_date", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedDate;
 
 }

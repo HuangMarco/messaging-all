@@ -35,16 +35,16 @@ public class OperationEntity {
     private Long operatorId;
 
     @Basic(optional = false)
-    @Column(name = "created_time", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created_date", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdTime;
+    private Date createdDate;
 
     @Basic(optional = false)
-    @Column(name = "updated_time", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "updated_date", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedTime;
+    private Date updatedDate;
 
     @Column(name = "namespace_id")
     private String namespaceId;

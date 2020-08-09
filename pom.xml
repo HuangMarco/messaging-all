@@ -91,6 +91,13 @@
 			</exclusions>
 		</dependency>
 
+		<!-- ModelMapper for DTO -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.5</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
 		<dependency>
 			<groupId>com.rabbitmq</groupId>

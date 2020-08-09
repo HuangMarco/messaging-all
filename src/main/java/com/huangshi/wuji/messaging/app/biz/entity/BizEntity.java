@@ -3,8 +3,10 @@ package com.huangshi.wuji.messaging.app.biz.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -23,6 +25,18 @@ public class BizEntity {
 
     @Column(name = "business_type")
     private String businessType;
+
+    @Basic(optional = false)
+    @Column(name = "created_date", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Basic(optional = false)
+    @Column(name = "updated_date", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedDate;
 
     @Column(name = "namespace_id")
     private String namespaceId;
