@@ -20,4 +20,10 @@ public class MessagingEntity {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="msg-seq-gen")
     private Long messageId;
 
+    @Column(name = "namespace_id")
+    private String namespaceId;
+
+    @Column(name = "app_id")
+    private String applicationId;
+
 }

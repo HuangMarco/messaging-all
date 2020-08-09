@@ -20,4 +20,13 @@ public class BizEntity {
     @SequenceGenerator(name="biz-seq-gen",sequenceName="BIZ_SEQ_GEN",initialValue=205, allocationSize=1)
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="biz-seq-gen")
     private Long businessId;
+
+    @Column(name = "business_type")
+    private String businessType;
+
+    @Column(name = "namespace_id")
+    private String namespaceId;
+
+    @Column(name = "app_id")
+    private String applicationId;
 }
