@@ -1,5 +1,8 @@
 package com.huangshi.wuji.messaging.app.biz.service.biz;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class BizServiceImpl implements BizService {
 
     @Override
