@@ -21,9 +21,6 @@ public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
     private BizService bizService;
 
     @Autowired
-    private CommonMessageService messageService;
-
-    @Autowired
     private OperationService operationService;
 
     @Autowired
@@ -40,7 +37,8 @@ public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
         //主业务
         BizEntityDTO updatedBizEntityDTO = bizService.createBiz(bizDTO);
         //消息入库
-        messageService.messageIntoDB();
+        commonMsgService.messageIntoDB();
+
         return updatedBizEntityDTO;
     }
 }

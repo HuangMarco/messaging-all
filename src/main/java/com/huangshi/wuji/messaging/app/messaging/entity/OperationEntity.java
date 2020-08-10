@@ -20,7 +20,7 @@ public class OperationEntity {
     @Column(name = "operation_id")
     @SequenceGenerator(name="msg-seq-gen",sequenceName="MSG_SEQ_GEN",initialValue=205, allocationSize=1)
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="msg-seq-gen")
-    private Long messageId;
+    private Long operationId;
 
     @Column(name = "business_type")
     private String bizType;
@@ -30,9 +30,6 @@ public class OperationEntity {
 
     @Column(name = "operation_content")
     private String operationContent;
-
-    @Column(name = "operator_id")
-    private Long operatorId;
 
     @Basic(optional = false)
     @Column(name = "created_date", insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
