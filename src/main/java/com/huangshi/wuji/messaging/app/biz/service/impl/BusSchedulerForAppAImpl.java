@@ -21,10 +21,13 @@ public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
     private BizService bizService;
 
     @Autowired
-    private CommonMessageService commonMsgService;
+    private CommonMessageService messageService;
 
     @Autowired
     private OperationService operationService;
+
+    @Autowired
+    private CommonMessageService commonMsgService;
 
     /**
      * 进行业务组装,
@@ -34,6 +37,10 @@ public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
     @Override
     public BizEntityDTO doBusinessForAppA(BizEntityDTO bizDTO) throws ParseException {
 
-        return bizService.createBiz(bizDTO);
+        //主业务
+        BizEntityDTO updatedBizEntityDTO = bizService.createBiz(bizDTO);
+        //消息入库
+        messageService.messageIntoDB();
+        return updatedBizEntityDTO;
     }
 }
