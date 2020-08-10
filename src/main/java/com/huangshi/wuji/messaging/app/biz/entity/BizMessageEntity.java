@@ -1,4 +1,4 @@
-package com.huangshi.wuji.messaging.app.messaging.entity;
+package com.huangshi.wuji.messaging.app.biz.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,15 +12,20 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="t_messaging")
-public class MessagingEntity {
+@Table(name="t_business_message")
+public class BizMessageEntity {
 
-    //这里如果设置了sequence，即便你页面上设置了employee_id，那么数据库依然按照自增策略创建主键
+    //这里不再设置自增策略，考虑分布式环境下不会设为自增，改为算法创建GUID
     @Id
-    @Column(name = "message_id")
-    @SequenceGenerator(name="msg-seq-gen",sequenceName="MSG_SEQ_GEN",initialValue=205, allocationSize=1)
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="msg-seq-gen")
-    private Long messageId;
+    @Column(name = "msg_id")
+    private String msgId;
+
+    // TODO: 2020/8/10 使用JPA关联方式关联
+    @Column(name = "biz_id")
+    private Long bizId;
+
+    @Column(name = "business_type")
+    private String businessType;
 
     @Column(name = "message_status")
     private String status;
@@ -45,10 +50,6 @@ public class MessagingEntity {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedDate;
-
-    //标明是为哪种服务发送的消息，比如Biz, Operation等
-    @Column(name = "message_for")
-    private String msgFor;
 
 
 }

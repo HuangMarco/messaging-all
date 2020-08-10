@@ -2,6 +2,7 @@ package com.huangshi.wuji.messaging.app.biz.service.biz;
 
 import com.huangshi.wuji.messaging.annotation.MessageLog;
 import com.huangshi.wuji.messaging.app.biz.dto.BizEntityDTO;
+import com.huangshi.wuji.messaging.app.biz.dto.BizMessageEntityDTO;
 import com.huangshi.wuji.messaging.app.biz.entity.BizEntity;
 import com.huangshi.wuji.messaging.app.biz.repository.BizEntityRepository;
 import org.modelmapper.ModelMapper;
@@ -20,23 +21,19 @@ public class BizServiceImpl implements BizService {
     private ModelMapper mapper;
 
     @Override
-    public boolean doBusiness() {
-        return false;
+    public BizEntityDTO doBusiness(BizEntityDTO bizDTO) throws ParseException{
+
+        BizEntityDTO savedBizDTO = createBiz(bizDTO);
+
+        bizMsgIntoDB(savedBizDTO);
+
+        return savedBizDTO;
     }
 
     @Override
-    public boolean businessIntoDB() {
-        return false;
-    }
+    public boolean bizMsgIntoDB(BizEntityDTO bizDTO) {
 
-    @Override
-    public boolean sendBizMessage() {
-        return false;
-    }
-
-    @Override
-    public boolean messageIntoDB() {
-        return false;
+        return true;
     }
 
     //打上该注解表示该方法要通过消息记录日志并入库
@@ -46,6 +43,11 @@ public class BizServiceImpl implements BizService {
         BizEntity bizEntity = convertToEntity(bizDTO);
         BizEntityDTO savedBizDTO = convertToDto(bizRepo.save(bizEntity));
         return savedBizDTO;
+    }
+
+    @Override
+    public BizMessageEntityDTO prepareBizMessage(BizEntityDTO bizDTO) {
+        return null;
     }
 
     private BizEntity convertToEntity(BizEntityDTO bizDTO) throws ParseException {
@@ -59,8 +61,5 @@ public class BizServiceImpl implements BizService {
 //                userService.getCurrentUser().getPreference().getTimezone());
         return bizDTO;
     }
-
-
-
 
 }
