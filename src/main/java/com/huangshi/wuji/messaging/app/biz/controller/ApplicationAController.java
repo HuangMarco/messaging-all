@@ -25,7 +25,7 @@ public class ApplicationAController {
     @ResponseStatus(HttpStatus.CREATED)
     public BizEntityDTO createBusinessForAppicationA(@RequestBody BizEntityDTO bizDTO) throws ParseException{
         BizEntity bizEntity = convertToEntity(bizDTO);
-        busForAppA.doBusinessForAppA();
+        busForAppA.doBusinessForAppA(bizDTO);
         // TODO: 2020/8/9
         return new BizEntityDTO();
     }

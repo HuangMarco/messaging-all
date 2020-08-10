@@ -24,7 +24,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.huangshi.wuji.messaging.app.messaging.entity",entityManagerFactoryRef = "messagingEntityManagerFactory",
+@EnableJpaRepositories(basePackages = "com.huangshi.wuji.messaging.app.messaging",entityManagerFactoryRef = "messagingEntityManagerFactory",
         transactionManagerRef= "messagingTransactionManager")
 @EnableTransactionManagement
 @EnableAutoConfiguration

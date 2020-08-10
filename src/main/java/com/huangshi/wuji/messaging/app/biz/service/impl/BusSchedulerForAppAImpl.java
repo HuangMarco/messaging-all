@@ -1,5 +1,6 @@
 package com.huangshi.wuji.messaging.app.biz.service.impl;
 
+import com.huangshi.wuji.messaging.app.biz.dto.BizEntityDTO;
 import com.huangshi.wuji.messaging.app.biz.service.BusSchedulerForAppA;
 import com.huangshi.wuji.messaging.app.biz.service.biz.BizService;
 import com.huangshi.wuji.messaging.app.biz.service.message.CommonMessageService;
@@ -8,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.text.ParseException;
 
 @Service
 public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
@@ -29,7 +32,8 @@ public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
      * @return
      */
     @Override
-    public boolean doBusinessForAppA() {
-        return false;
+    public BizEntityDTO doBusinessForAppA(BizEntityDTO bizDTO) throws ParseException {
+
+        return bizService.createBiz(bizDTO);
     }
 }

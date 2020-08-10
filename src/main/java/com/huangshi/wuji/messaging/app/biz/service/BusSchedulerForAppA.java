@@ -1,5 +1,9 @@
 package com.huangshi.wuji.messaging.app.biz.service;
 
+import com.huangshi.wuji.messaging.app.biz.dto.BizEntityDTO;
+
+import java.text.ParseException;
+
 public interface BusSchedulerForAppA {
 
 
@@ -15,7 +19,7 @@ public interface BusSchedulerForAppA {
      * d. 发送消息步骤2 - 发送消息
      */
 
-    boolean doBusinessForAppA();
+    BizEntityDTO doBusinessForAppA(BizEntityDTO bizDTO) throws ParseException;
 
 
 
