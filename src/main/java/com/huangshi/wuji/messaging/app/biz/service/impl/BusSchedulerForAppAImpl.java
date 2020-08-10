@@ -36,8 +36,12 @@ public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
 
         //主业务
         BizEntityDTO updatedBizEntityDTO = bizService.createBiz(bizDTO);
+        //埋点-记录操作日志
+        operationService.sendOperationMessage();
         //消息入库
         commonMsgService.messageIntoDB();
+        //发送消息
+        commonMsgService.sendMessage();
 
         return updatedBizEntityDTO;
     }

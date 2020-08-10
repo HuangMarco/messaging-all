@@ -1,5 +1,6 @@
 package com.huangshi.wuji.messaging.app.biz.service.biz;
 
+import com.huangshi.wuji.messaging.annotation.MessageLog;
 import com.huangshi.wuji.messaging.app.biz.dto.BizEntityDTO;
 import com.huangshi.wuji.messaging.app.biz.entity.BizEntity;
 import com.huangshi.wuji.messaging.app.biz.repository.BizEntityRepository;
@@ -38,6 +39,8 @@ public class BizServiceImpl implements BizService {
         return false;
     }
 
+    //打上该注解表示该方法要通过消息记录日志并入库
+    @MessageLog
     @Override
     public BizEntityDTO createBiz(BizEntityDTO bizDTO) throws ParseException{
         BizEntity bizEntity = convertToEntity(bizDTO);

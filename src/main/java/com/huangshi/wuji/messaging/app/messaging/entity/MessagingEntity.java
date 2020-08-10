@@ -22,6 +22,12 @@ public class MessagingEntity {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="msg-seq-gen")
     private Long messageId;
 
+    @Column(name = "message_status")
+    private String status;
+
+    @Column(name = "send_times")
+    private int sendTimes;
+
     @Column(name = "namespace_id")
     private String namespaceId;
 
