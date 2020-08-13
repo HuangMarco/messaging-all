@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class BizMessageEntityDTO {
 
@@ -39,9 +39,10 @@ public class BizMessageEntityDTO {
 //    }
 
 
-    public BizMessageEntityDTO(@JsonProperty("msgId") String msgId, @JsonProperty("bizId") Long bizId, @JsonProperty("status") String status, @JsonProperty("sendTimes") int sendTimes, @JsonProperty("namespaceId") String namespaceId, @JsonProperty("applicationId") String applicationId, @JsonProperty("createdDate") String createdDate, @JsonProperty("updatedDate") String updatedDate) {
+    public BizMessageEntityDTO(@JsonProperty("msgId") String msgId, @JsonProperty("bizId") Long bizId, @JsonProperty("businessType") String businessType, @JsonProperty("status") String status, @JsonProperty("sendTimes") int sendTimes, @JsonProperty("namespaceId") String namespaceId, @JsonProperty("applicationId") String applicationId, @JsonProperty("createdDate") String createdDate, @JsonProperty("updatedDate") String updatedDate) {
         this.msgId = msgId;
         this.bizId = bizId;
+        this.businessType = businessType;
         this.status = status;
         this.sendTimes = sendTimes;
         this.namespaceId = namespaceId;
@@ -51,7 +52,7 @@ public class BizMessageEntityDTO {
     }
 
     public String toString(){
-        return String.format("BizRelatedMessage[messageId=%m, businessId=%d, businessType=%t, namespaceId=%n, applicationId=%a, createDate=%c]", msgId, bizId, businessType, namespaceId, applicationId, createdDate);
+        return String.format("BizRelatedMessage[messageId=%s, businessId=%o, businessType=%s, namespaceId=%s, applicationId=%s, createDate=%s]", msgId, bizId, businessType, namespaceId, applicationId, createdDate);
     }
 
 }

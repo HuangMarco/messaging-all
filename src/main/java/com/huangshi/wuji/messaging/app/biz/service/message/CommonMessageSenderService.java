@@ -7,9 +7,9 @@ import com.huangshi.wuji.messaging.app.biz.dto.OperationEntityDTO;
 public interface CommonMessageSenderService {
 
     //发送业务消息
-    boolean sendBizMessage(BizMessageEntityDTO bizMsgDTO);
+    void sendBizMessage(BizMessageEntityDTO bizMsgDTO);
 
     //发送运维日志记录消息
-    boolean sendOperationMessage(OperationEntityDTO opeDTO);
+    void sendOperationMessage(OperationEntityDTO opeDTO);
 
 }

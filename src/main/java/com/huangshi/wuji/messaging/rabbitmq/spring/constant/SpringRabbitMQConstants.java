@@ -15,8 +15,8 @@ public class SpringRabbitMQConstants {
 
     //For Biz
     public static final String Biz_Topic_Exchange_Name = "biz-exchange";
-    public static final String Message_BIZ_Routing_Key = "biz.route.key";
-    public static final String Message_BIZ_Queue = "biz-msg-queue";
+    public static final String BIZ_Routing_Key = "biz.route.key";
+    public static final String BIZ_Queue = "biz-msg-queue";
 
 
 }

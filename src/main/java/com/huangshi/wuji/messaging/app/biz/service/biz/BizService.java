@@ -17,6 +17,6 @@ public interface BizService {
 
     //准备待发的业务消息
 
-    BizMessageEntityDTO prepareBizMessage(BizEntityDTO bizDTO);
+    BizMessageEntityDTO prepareBizMessage(BizEntityDTO bizDTO) throws ParseException;
 
 }

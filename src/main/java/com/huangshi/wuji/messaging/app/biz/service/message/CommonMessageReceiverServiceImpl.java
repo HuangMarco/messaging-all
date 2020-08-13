@@ -6,14 +6,18 @@ import com.huangshi.wuji.messaging.rabbitmq.spring.constant.SpringRabbitMQConsta
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CommonMessageReceiverServiceImpl implements CommonMessageReceiverService {
 
     private static final Logger log = LoggerFactory.getLogger(CommonMessageReceiverServiceImpl.class);
+
     @Override
-    @RabbitListener(queues = SpringRabbitMQConstants.Message_BIZ_Queue)
-    public void receiveMessage(final BizMessageEntityDTO bizMsg) {
-        log.info("Received message as specific class: {}", bizMsg.toString());
+    @RabbitListener(queues = SpringRabbitMQConstants.BIZ_Queue)
+    public void receiveMessage(final BizMessageEntityDTO bizMsgDTO) {
+        log.info("start receiving message...");
+        log.info("Received biz message: {}", bizMsgDTO.toString());
     }
 
 

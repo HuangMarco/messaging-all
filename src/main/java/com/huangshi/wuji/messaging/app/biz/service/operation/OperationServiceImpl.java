@@ -32,7 +32,8 @@ public class OperationServiceImpl implements OperationService {
 
         OperationEntityDTO opeDTO = produceOperationEntityDTO(bizDTO);
 
-        return msgSenderService.sendOperationMessage(opeDTO);
+        msgSenderService.sendOperationMessage(opeDTO);
+        return true;
     }
 
     private OperationEntityDTO produceOperationEntityDTO(BizEntityDTO bizDTO){

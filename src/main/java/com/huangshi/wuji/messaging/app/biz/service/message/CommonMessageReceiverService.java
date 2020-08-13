@@ -5,5 +5,6 @@ import com.huangshi.wuji.messaging.app.biz.msgcontent.BizRelatedMessage;
 
 public interface CommonMessageReceiverService {
 
-    public void receiveMessage(final BizMessageEntityDTO bizMsg);
+//    public void receiveMessage(final BizMessageEntityDTO bizMsg);
+    public void receiveMessage(final BizMessageEntityDTO bizMsgDTO);
 }
