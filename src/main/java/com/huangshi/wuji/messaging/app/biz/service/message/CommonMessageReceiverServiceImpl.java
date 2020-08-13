@@ -13,6 +13,12 @@ public class CommonMessageReceiverServiceImpl implements CommonMessageReceiverSe
 
     private static final Logger log = LoggerFactory.getLogger(CommonMessageReceiverServiceImpl.class);
 
+//    @RabbitListener(bindings = @QueueBinding(
+//            value = @Queue(value = "queue001", durable = "true"),
+//            exchange = @Exchange(value = "exchange001", durable = "true",
+//                    type = "topic", ignoreDeclarationExceptions = "true"),
+//            key = "springboot.*"
+//    ))
     @Override
     @RabbitListener(queues = SpringRabbitMQConstants.BIZ_Queue)
     public void receiveMessage(final BizMessageEntityDTO bizMsgDTO) {
