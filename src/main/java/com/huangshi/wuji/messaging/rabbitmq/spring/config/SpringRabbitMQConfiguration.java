@@ -2,14 +2,14 @@ package com.huangshi.wuji.messaging.rabbitmq.spring.config;
 
 import com.huangshi.wuji.messaging.rabbitmq.spring.constant.SpringRabbitMQConstants;
 import com.huangshi.wuji.messaging.rabbitmq.spring.receiver.SpringReceiver;
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.rabbit.connection.Connection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -19,6 +19,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import com.huangshi.wuji.messaging.app.biz.service.message.CommonMessageReceiverServiceImpl;
+
+import java.io.IOException;
 
 @Configuration
 @Component
@@ -118,22 +120,51 @@ public class SpringRabbitMQConfiguration {
      */
     @Bean
     public RabbitTemplate rabbitTemplate(final CachingConnectionFactory connectionFactory){
-        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+
+        connectionFactory.setPublisherConfirms(true);
+        connectionFactory.setPublisherReturns(true);
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(producerJackson2MessageConverter());
         rabbitTemplate.setEncoding("UTF-8");
         rabbitTemplate.setMandatory(true);
 
-        rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
-            String correlationId = message.getMessageProperties().getCorrelationId();
-            log.debug("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}", correlationId, replyCode, replyText, exchange, routingKey);
+        rabbitTemplate.setReturnCallback(new RabbitTemplate.ReturnCallback() {
+            @Override
+            public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
+                System.out.println("============returnedMessage==method=========");
+                System.out.println("replyCode: "+replyCode);
+                System.out.println("replyText: "+replyText);
+                System.out.println("exchange: "+exchange);
+                System.out.println("routingKey: "+routingKey);
+            }
         });
 
+       /* rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
+            String correlationId = message.getMessageProperties().getCorrelationId();
+            System.out.println("Return Callback printed.");
+            log.info("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}", correlationId, replyCode, replyText, exchange, routingKey);
+        });*/
+
         // 消息确认，yml需要配置 publisher-confirms: true
+/*
+        rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback() {
+            @Override
+            public void confirm(CorrelationData correlationData, boolean b, String s) {
+                System.out.println("================");
+                System.out.println("correlationData = " + correlationData);
+                System.out.println("ack = " + b);
+                System.out.println("cause = " + s);
+                System.out.println("================");
+            }
+        });
+        */
+
         rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
+            System.out.println("Confirm Callback printed.");
             if (ack) {
-                log.debug("消息发送到exchange成功,id: {}", correlationData.getId());
+                log.info("消息发送到exchange成功,id: {}", correlationData);
             } else {
-                log.debug("消息发送到exchange失败,原因: {}", cause);
+                log.info("消息发送到exchange失败,原因: {}", cause);
             }
         });
 

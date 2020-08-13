@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 @RestController
@@ -23,7 +24,7 @@ public class ApplicationAController {
 
     @RequestMapping(value = "/create/order",method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public BizEntityDTO createBusinessForAppicationA(@RequestBody BizEntityDTO bizDTO) throws ParseException{
+    public BizEntityDTO createBusinessForAppicationA(@RequestBody BizEntityDTO bizDTO) throws ParseException, IOException {
         BizEntity bizEntity = convertToEntity(bizDTO);
         busForAppA.doBusinessForAppA(bizDTO);
         // TODO: 2020/8/9

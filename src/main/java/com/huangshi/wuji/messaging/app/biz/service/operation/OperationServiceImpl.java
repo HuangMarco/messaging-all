@@ -9,6 +9,7 @@ import com.huangshi.wuji.messaging.app.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -28,7 +29,7 @@ public class OperationServiceImpl implements OperationService {
      * @return
      */
     @Override
-    public boolean sendOperationMessage(BizEntityDTO bizDTO) {
+    public boolean sendOperationMessage(BizEntityDTO bizDTO) throws IOException {
 
         OperationEntityDTO opeDTO = produceOperationEntityDTO(bizDTO);
 

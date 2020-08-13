@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 @Service
@@ -35,7 +36,7 @@ public class BusSchedulerForAppAImpl implements BusSchedulerForAppA {
      * @return
      */
     @Override
-    public BizEntityDTO doBusinessForAppA(BizEntityDTO bizDTO) throws ParseException {
+    public BizEntityDTO doBusinessForAppA(BizEntityDTO bizDTO) throws ParseException, IOException {
 
         //主业务
         BizEntityDTO updatedBizEntityDTO = bizService.doBusiness(bizDTO);

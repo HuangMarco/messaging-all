@@ -2,6 +2,7 @@ package com.huangshi.wuji.messaging.app.biz.service;
 
 import com.huangshi.wuji.messaging.app.biz.dto.BizEntityDTO;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 public interface BusSchedulerForAppA {
@@ -19,7 +20,7 @@ public interface BusSchedulerForAppA {
      * d. 发送消息步骤2 - 发送消息
      */
 
-    BizEntityDTO doBusinessForAppA(BizEntityDTO bizDTO) throws ParseException;
+    BizEntityDTO doBusinessForAppA(BizEntityDTO bizDTO) throws ParseException, IOException;
 
 
 
